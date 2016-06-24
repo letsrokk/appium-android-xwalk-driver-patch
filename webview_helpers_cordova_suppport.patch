@@ -1,0 +1,57 @@
+Index: lib/webview-helpers.js
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- lib/webview-helpers.js	(revision 99f4951369ee86cfa3ec789f2e4706f9124c9c9e)
++++ lib/webview-helpers.js	(revision )
+@@ -20,11 +20,11 @@
+   let out = await adb.shell(["cat", "/proc/net/unix"]);
+   for (let line of out.split("\n")) {
+     line = line.trim();
+-    let webviewPid = line.match(/@?webview_devtools_remote_(\d+)/);
++    let webviewPid = line.match(/@?[a-z._]+_devtools_remote(_?\d*)/);
+     if (deviceSocket) {
+       if (line.indexOf(`@${deviceSocket}`) === line.length - deviceSocket.length - 1) {
+         if (webviewPid) {
+-          webviews.push(WEBVIEW_BASE + webviewPid[1]);
++          webviews.push(WEBVIEW_BASE + deviceSocket + webviewPid[1]);
+         } else {
+           webviews.push(CHROMIUM_WIN);
+         }
+@@ -32,7 +32,7 @@
+     } else if (webviewPid) {
+       // for multiple webviews a list of 'WEBVIEW_<index>' will be returned
+       // where <index> is zero based (same is in selendroid)
+-      webviews.push(WEBVIEW_BASE + webviewPid[1]);
++      webviews.push(WEBVIEW_BASE + pid);
+     }
+   }
+   return _.uniq(webviews);
+@@ -58,7 +58,7 @@
+   /* Output of ps is like:
+    USER     PID   PPID  VSIZE  RSS     WCHAN    PC         NAME
+    u0_a136   6248  179   946000 48144 ffffffff 4005903e R com.example.test
+-  */
++   */
+   let header = lines[0].trim().split(/\s+/);
+   // the column order may not be identical on all androids
+   // dynamically locate the pid and name column.
+@@ -95,6 +95,8 @@
+     let pkg = await procFromWebview(adb, webviewName);
+     return WEBVIEW_BASE + pkg;
+   });
++
++  logger.debug(`Device Socket: ${deviceSocket}`);
+   logger.debug(`Found webviews: ${JSON.stringify(webviews)}`);
+   return webviews;
+ };
+@@ -107,7 +109,7 @@
+         caps.chromeOptions[opt] = val;
+       } else {
+         logger.warn(`Cannot pass option ${caps.chromeOptions[opt]} because ` +
+-                    "Appium needs it to make chromeDriver work");
++            "Appium needs it to make chromeDriver work");
+       }
+     }
+   }
