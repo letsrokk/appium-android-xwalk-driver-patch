@@ -38,6 +38,7 @@ $ appium
 [Appium] Appium REST http interface listener started on 0.0.0.0:4723
 ```
 Add capabilities as follows
+Java:
 ```
 String ANDROID_APP_PACKAGE = "com.example.app.package";
 String ANDROID_DEVICE_SOCKET = ANDROID_APP_PACKAGE + "_devtools_remote";
@@ -45,4 +46,14 @@ capabilities.setCapability("androidDeviceSocket", ANDROID_DEVICE_SOCKET);
 ChromeOptions chromeOptions = new ChromeOptions();
 chromeOptions.setExperimentalOption("androidDeviceSocket", ANDROID_DEVICE_SOCKET);
 capabilities.setCapability(ChromeOptions.CAPABILITY, chromeOptions);
+```
+Ruby:
+```
+caps = {
+    ...
+    'androidDeviceSocket' => 'com.example.app.package_devtools_remote',
+    'chromeOptions' => {
+        'androidDeviceSocket' => 'com.example.app.package_devtools_remote'
+    }
+  }
 ```
