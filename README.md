@@ -38,6 +38,7 @@ $ appium
 [Appium] Appium REST http interface listener started on 0.0.0.0:4723
 ```
 Add capabilities as follows
+
 Java:
 ```
 String ANDROID_APP_PACKAGE = "com.example.app.package";
