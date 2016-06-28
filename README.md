@@ -2,6 +2,10 @@
 
 Patched chromdriver binary provided by https://github.com/piotrekkmt/chromedriver-appium
 
+# Known issues
+
+With seems like with this patch it is possible to work only with NATIVE and base WEBVIEW contexts. I wasn't able yet to switch to second, third etc. opened webview within the app
+
 # How-to
 
 This patch allows Appium to find Crosswalk (Cordova) webviews on Android
