@@ -12,7 +12,9 @@ This patch allows Appium to find Crosswalk (Cordova) webviews on Android
 
 Appium: 1.5.3
 Platform: macOS
-Patch would work with any other OS as well but you'll need chromedriver binary for that OS (i.e. Windows: https://github.com/ITKarel/ChromeDriver)
+Patch would work with any other OS as well but you'll need chromedriver binary for that OS 
+Windows: https://github.com/ITKarel/ChromeDriver
+Linux: https://github.com/chOOnz/xwalk-chromedriver
 
 The steps as follows:
 
