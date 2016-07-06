@@ -4,7 +4,8 @@ Patched chromdriver binary provided by https://github.com/piotrekkmt/chromedrive
 
 # Known issues
 
-With seems like with this patch it is possible to work only with NATIVE and base WEBVIEW contexts. I wasn't able yet to switch to second, third etc. opened webview within the app
+- With seems like with this patch it is possible to work only with NATIVE and base WEBVIEW contexts. I wasn't able yet to switch to second, third etc. opened webview within the app
+- 'autoWebview' capability is not supported, you have to manualy switch app to webview after driver initialization
 
 # How-to
 
