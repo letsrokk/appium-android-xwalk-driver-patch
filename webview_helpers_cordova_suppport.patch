@@ -10,12 +10,12 @@ Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
    for (let line of out.split("\n")) {
      line = line.trim();
 -    let webviewPid = line.match(/@?webview_devtools_remote_(\d+)/);
-+    let webviewPid = line.match(/@?[a-z._]+_devtools_remote(_?\d*)/);
++    let webviewPid = line.match(/(\d*) @?[a-z._]+_devtools_remote/);
      if (deviceSocket) {
        if (line.indexOf(`@${deviceSocket}`) === line.length - deviceSocket.length - 1) {
          if (webviewPid) {
 -          webviews.push(WEBVIEW_BASE + webviewPid[1]);
-+          webviews.push(WEBVIEW_BASE + deviceSocket.replace("_devtools_remote","") + webviewPid[1]);
++          webviews.push(WEBVIEW_BASE + deviceSocket.replace("_devtools_remote","") + "_" + webviewPid[1]);
          } else {
            webviews.push(CHROMIUM_WIN);
          }
