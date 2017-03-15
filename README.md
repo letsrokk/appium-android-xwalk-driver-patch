@@ -1,5 +1,6 @@
 # appium-android-xwalk-driver-patch
 
+Appium issue: https://github.com/appium/appium/issues/4597
 Patched chromdriver binary provided by https://github.com/piotrekkmt/chromedriver-appium
 
 # Known issues
