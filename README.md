@@ -1,3 +1,8 @@
+# UPDATE
+
+Appium Adnroid Driver issue is fixed in 1.6.x
+Patched ChomeDriver binaries for macOS and Windows can be found here: https://github.com/blutter/appium-crosswalk-fix
+
 # appium-android-xwalk-driver-patch
 
 Appium issue: https://github.com/appium/appium/issues/4597
